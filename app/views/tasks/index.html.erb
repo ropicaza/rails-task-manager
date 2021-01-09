@@ -4,14 +4,15 @@
   <ul>
     <% @tasks.each do |task| %>
       <% if task.completed %>
-        <li><input type="checkbox" checked>
+        <li><i class="far fa-check-square"></i>
         <%= link_to task.tittle, task_path(task.id) %>
-        <%= link_to "delete", task_path(task.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to task_path(task.id), method: :delete, data: { confirm: "Are you sure?" } do %> <i class="fas fa-trash"></i> <% end %>
         </li>
       <% else %>
-        <li><input type="checkbox" >
+        <li>
+        <i class="fas fa-times"></i>
         <%= link_to task.tittle, task_path(task) %>
-        <%= link_to "delete", task_path(task.id), method: :delete %>
+        <%= link_to task_path(task.id), method: :delete, data: { confirm: "Are you sure?" } do %> <i class="fas fa-trash"></i> <% end %>
         </li>
       <% end %>
     <% end %>

@@ -1,17 +1,18 @@
-<div class="container">
+<div class="d-flex justify-content-between align-items-center">
   <h1> <%= @task.tittle %></h1>
-  <div>
-  <%= link_to 'Edit this task', edit_task_path(@task.id)  %>
-  </div>
-  <div class="container">
-    <%= @task.details %>
-  </div>
+  <%= link_to 'Edit this task', edit_task_path(@task.id), class: "btn btn-primary"  %>
+</div>
 
-    <% if @task.completed %>
-      <li><input type="checkbox" checked>This task is completed!</li>
-    <% else %>
-      <li><input type="checkbox" >This task is not completed</li>
-    <% end %>
+<p><%= @task.details %></p>
 
-    <%= link_to 'Back to list!', tasks_path %>
-  </div>
+<% if @task.completed %>
+  <li><input type="checkbox" checked>This task is completed!</li>
+<% else %>
+  <li><input type="checkbox" >This task is not completed</li>
+<% end %>
+
+<hr>
+
+<%= link_to tasks_path do  %>
+  <strong><</strong> Back to List!
+<% end %>

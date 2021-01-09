@@ -1,22 +1,29 @@
-<div class="container">
   <h1>My Tasks</h1>
 
-  <ul>
+  <ul class="list-group">
     <% @tasks.each do |task| %>
-      <% if task.completed %>
-        <li><i class="far fa-check-square"></i>
-        <%= link_to task.tittle, task_path(task.id) %>
-        <%= link_to task_path(task.id), method: :delete, data: { confirm: "Are you sure?" } do %> <i class="fas fa-trash"></i> <% end %>
-        </li>
+      <li class="list-group-item border-0">
+        <% if task.completed %>
+          <i class="far fa-check-square"></i>
+          <%= link_to task.tittle, task_path(task) %>
+          <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %> 
+          <i class="fas fa-trash"></i> 
+        <% end %>
+      </li>
       <% else %>
-        <li>
-        <i class="fas fa-times"></i>
-        <%= link_to task.tittle, task_path(task) %>
-        <%= link_to task_path(task.id), method: :delete, data: { confirm: "Are you sure?" } do %> <i class="fas fa-trash"></i> <% end %>
+        <li class="list-group-item border-0">
+          <i class="fas fa-times"></i>
+          <%= link_to task.tittle, task_path(task) %>
+          <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %> 
+          <i class="fas fa-trash"></i> 
+          <% end %>
         </li>
       <% end %>
     <% end %>
   </ul>
 
-  <%= link_to 'Add a new task!', new_task_path  %>
-</div>
+  <hr>
+
+  <%= link_to new_task_path do %>
+    <strong>+</strong> Add a new task!
+  <% end %>
